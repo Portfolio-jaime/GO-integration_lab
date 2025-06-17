@@ -1,0 +1,109 @@
+# Archivos y directorios ignorados en un proyecto GO-integration_lab
+
+# -------------------------------------------------------------------
+# Go (GoLang)
+# -------------------------------------------------------------------
+# Binarios ejecutables
+*.exe
+*.dll
+*.so
+*.dylib
+*.rpm
+*.deb
+
+# Directorios de compilación
+bin/
+pkg/
+
+# Archivos de caché del módulo Go
+.go/
+go.work.sum # Ignorar si usas go.work, ya que se regenera
+
+# Archivos de caché de pruebas
+*.test
+*.out
+
+# IDEs y Editores de Código Go (si no están en .vscode)
+.idea/ # IntelliJ GoLand
+.vscode/ # Ignorar ciertas configuraciones de VS Code (ver más abajo)
+
+# -------------------------------------------------------------------
+# Terraform
+# -------------------------------------------------------------------
+# Archivos de estado de Terraform
+.terraform/           # Directorio de trabajo local de Terraform
+*.tfstate             # Archivos de estado principal
+*.tfstate.* # Archivos de estado de backup
+
+# Archivos de plan de Terraform
+*.tfplan
+
+# Archivos crash.log del CLI de Terraform
+crash.log
+
+# Archivos de claves SSH (si se generan localmente)
+.ssh/id_rsa
+.ssh/id_rsa.pub
+
+# -------------------------------------------------------------------
+# DevContainer / Docker
+# -------------------------------------------------------------------
+# Archivos de caché de construcción de Docker (BuildKit)
+.dockerignore.tmp # Archivos temporales de .dockerignore
+
+# Archivos temporales de Kind (si se generan fuera del /root/.kube/config)
+kind-config*.yaml
+
+# Kubeconfig generado por Kind (ya está en .devcontainer/Dockerfile para copiarlo)
+# Pero si accidentalmente aparece uno en la raíz de tu proyecto, ignóralo
+kubeconfig
+.kube/config
+
+# -------------------------------------------------------------------
+# General
+# -------------------------------------------------------------------
+# Directorios de sistema operativo
+.DS_Store             # macOS
+Thumbs.db             # Windows
+ehthumbs.db           # Windows
+Desktop.ini           # Windows
+$RECYCLE.BIN/         # Windows
+*.log
+*.tmp
+*.bak
+*.swp                 # Vim swap files
+*~                    # Emacs backup files
+
+# Dependencias de Node (si las usas para alguna herramienta frontend o scripts)
+node_modules/
+
+# IDEs y Editores de Código generales
+.project
+.classpath
+.settings/
+.idea/
+*.iml
+
+# VS Code specific files
+.vscode/*.code-workspace
+.vscode/*.log
+.vscode/pylance-bundle/
+.vscode/extensions.json # Esta se puede mantener si quieres sugerir extensiones
+.vscode/settings.json # Si contiene rutas o datos específicos de tu máquina
+.vscode/tasks.json # Si es específico de tu máquina
+.vscode/launch.json # Si es específico de tu máquina
+
+# Archivos de caché y compilación generales
+*.pyc
+*.o
+*.a
+*.obj
+*.out
+
+# Entornos virtuales (Python, si usas scripts auxiliares)
+venv/
+env/
+
+# Archivos generados automáticamente por el script
+# (Si el script crea logs o temporales en la raíz)
+*.log

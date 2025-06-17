@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: go-cloud-app
-  namespace: go-app-ns # Debe coincidir con el namespace creado por Terraform
+  namespace: go-app-ns
 spec:
-  replicas: 1 # ArgoCD gestionará el número de réplicas a partir de ahora
+  replicas: 1 # ArgoCD gestionará a partir de aquí
   selector:
     matchLabels:
       app: go-cloud-app
@@ -15,12 +15,12 @@ spec:
     spec:
       containers:
       - name: go-cloud-app
-        image: go-app:v1 # ¡La imagen que construiste y cargaste en Kind!
+        image: go-app:v1 # La imagen que ya construiste y cargaste en Kind
         ports:
         - containerPort: 8080
         env:
         - name: APP_NAME
-          value: "Go App via ArgoCD" # Este mensaje será gestionado por GitOps
+          value: "Go App via ArgoCD" # Este mensaje se gestionará por GitOps
 ---
 apiVersion: v1
 kind: Service
@@ -34,4 +34,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
-  type: NodePort # Para acceder localmente
+  type: NodePort # Para acceso local
