@@ -1,0 +1,25 @@
+# Docker Compose file for Crossplane Lab environment
+# This file defines a service that builds a Docker image for the Crossplane Lab
+# and mounts the workspace directory for development purposes.
+
+version: "3.8"
+
+services:
+  go-lab:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+      - go-data:/home/arheanja/.config # Persistencia de configuraciones
+      - go-tools:/usr/local/bin # Persistencia de herramientas instaladas
+    command: sleep infinity
+    networks:
+      - go-lab
+
+volumes:
+  go-data:
+  go-tools:
+
+networks:
+  go-lab:

@@ -1,0 +1,58 @@
+{
+  "name": "GO Integration Lab",
+  "dockerComposeFile": ["./docker-compose.yml"],
+  "service": "go-lab",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "features": {
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+      "enabled": true,
+      "minikubeDriver": "docker",
+      "minikubeNodeCount": 2,
+      "minikubeK8sVersion": "latest",
+      "minikubeIngress": true,
+      "minikubeRegistry": true,
+      "kubectlVersion": "latest",
+      "minikubeVersion": "latest",
+      "kubectlAliases": true,
+      "kumaVersion": "latest",
+      "kumactlVersion": "latest",
+      "helmVersion": "latest",
+      "helmAliases": true
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "dockerComposeVersion": "latest",
+      "dockerComposeAliases": true,
+      "dockerComposeCompletion": true,
+      "dockerComposeBashCompletion": true,
+      "dockerComposeZshCompletion": true,
+      "dockerComposeFishCompletion": true,
+      "dockerComposePowershellCompletion": true
+    },
+    "ghcr.io/eliises/devcontainer-features/bash-profile:1.0.1" : {
+      "bashProfileAliases": true,
+      "bashProfileVersion": "1.0.0"
+    }
+  },
+  "forwardPorts": [
+		3000,
+		7007,
+		8080,
+    8081,
+    8082
+	],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode-remote.remote-containers",
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml",
+        "hashicorp.terraform",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+    }
+  },
+  "postCreateCommand": "echo 'Contenedor listo!' && sudo service docker start || echo 'Docker ya está corriendo'"
+}
