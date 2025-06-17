@@ -20,7 +20,7 @@ spec:
         - containerPort: 8080
         env:
         - name: APP_NAME
-          value: "Go App via ArgoCD" # Este mensaje se gestionará por GitOps
+          value: "Go App via ArgoCD (Version 2.2 - GitOps Centralizado)"
 ---
 apiVersion: v1
 kind: Service
