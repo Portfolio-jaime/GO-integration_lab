@@ -46,27 +46,27 @@ Este diagrama ilustra el flujo y la interacción entre los diferentes componente
 
 ```mermaid
 graph TD
-    subgraph Host Machine (Tu PC Local)
+    subgraph HostMachine["Host Machine (Tu PC Local)"]
         Docker["Docker Desktop"]
         VSCode["Visual Studio Code"]
-        BashScript["Bash Script<br>(setup_cloud_native_env.sh)"]
+        BashScript["Bash Script (setup_cloud_native_env.sh)"]
     end
 
-    subgraph DevContainer (Entorno de Desarrollo Aislado)
+    subgraph DevContainer["DevContainer (Entorno de Desarrollo Aislado)"]
         direction LR
         DevEnv["Entorno de Desarrollo"]
-        GoAppSrc[/"Código Fuente Go<br>(go-app/)"/]
-        GoTests[("Tests Go")]
-        DockerCLI(("Docker CLI"))
+        GoAppSrc["Código Fuente Go (go-app/)"]
+        GoTests["Tests Go"]
+        DockerCLI["Docker CLI"]
         Kubectl["kubectl CLI"]
         TerraformCLI["Terraform CLI"]
         ArgoCDCLI["ArgoCD CLI"]
 
-        subgraph Kubernetes Cluster (Kind)
-            K8sAPI("Kubernetes API Server")
-            K8sNodes[K8s Nodos<br>(Contenedores Docker)]
-            GoAppPods[(Pods de la App Go)]
-            ArgoCDComponents[ArgoCD Components]
+        subgraph KubernetesCluster["Kubernetes Cluster (Kind)"]
+            K8sAPI["Kubernetes API Server"]
+            K8sNodes["K8s Nodos (Contenedores Docker)"]
+            GoAppPods["Pods de la App Go"]
+            ArgoCDComponents["Componentes de ArgoCD"]
         end
 
         DevEnv --- GoAppSrc
@@ -83,9 +83,9 @@ graph TD
         K8sAPI -- Despliega ArgoCD --> ArgoCDComponents
     end
 
-    subgraph Git Remote (GitHub)
+    subgraph GitRemote["Git Remote (GitHub)"]
         MainRepo["go-integration_lab.git"]
-        K8sManifests[/"Manifiestos K8s<br>(k8s-manifests/)"/]
+        K8sManifests["Manifiestos K8s (k8s-manifests/)"]
     end
 
     VSCode -- Accede al --> DevContainer
