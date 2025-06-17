@@ -45,6 +45,14 @@ crash.log
 .ssh/id_rsa
 .ssh/id_rsa.pub
 
+# Ignorar archivos de estado de Terraform
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+
+# Opcional: Ignorar cualquier archivo de estado de Terraform en cualquier subdirectorio
+**/terraform.tfstate
+**/terraform.tfstate.backup
+
 # -------------------------------------------------------------------
 # DevContainer / Docker
 # -------------------------------------------------------------------
